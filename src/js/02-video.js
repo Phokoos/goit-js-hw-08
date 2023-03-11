@@ -20,7 +20,6 @@ player.setCurrentTime(currentTime);
 player.on('timeupdate', throttle(setCurrentTime, 1000));
 
 function setCurrentTime(value) {
-	console.log(value.seconds);
 	localStorage.setItem(VIDEO_TIME_STORAGE_KEY, value.seconds);
 }
 
