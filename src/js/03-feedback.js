@@ -33,6 +33,10 @@ function writeFormValueToStorage(event) {
 elInputForm.addEventListener("submit", (event) => {
 	event.preventDefault();
 
+	if (elInputEmail.value === "" || elInputMessage.value === "") {
+		return alert("Ви не заповнили всі поля форми!");
+	}
+
 	console.log(formDates);
 
 	elInputEmail.value = "";
