@@ -22,7 +22,7 @@ try {
 elInputEmail.value = formDates.email;
 elInputMessage.value = formDates.message;
 
-elInputForm.addEventListener("input",  throttle(event => writeFormValueToStorage(event), 1000));
+elInputForm.addEventListener("input",  throttle(event => writeFormValueToStorage(event), 500));
 
 function writeFormValueToStorage(event) {
 	formDates[event.target.name] = event.target.value;
@@ -42,5 +42,5 @@ elInputForm.addEventListener("submit", (event) => {
 	elInputEmail.value = "";
 	elInputMessage.value = "";
 	
-	localStorage.removeItem(DATAS_STORAGE_KEY);
+	return localStorage.removeItem(DATAS_STORAGE_KEY);
 })
