@@ -42,5 +42,6 @@ elInputForm.addEventListener("submit", (event) => {
 	elInputEmail.value = "";
 	elInputMessage.value = "";
 	
-	return localStorage.removeItem(DATAS_STORAGE_KEY);
+	elInputForm.reset();
+	localStorage.removeItem(DATAS_STORAGE_KEY);
 })
