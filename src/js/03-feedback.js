@@ -14,19 +14,24 @@ let formDates = {
 try {
 	if (JSON.parse(localStorage.getItem(DATAS_STORAGE_KEY)) !== null) {
 		formDates = JSON.parse(localStorage.getItem(DATAS_STORAGE_KEY));
+		elInputEmail.value = formDates.email;
+		elInputMessage.value = formDates.message;
+
+		console.log("formDates at start try: ");
+		console.log(formDates);
 	}
 } catch (error) {
 	console.log(error);
 }
 
-elInputEmail.value = formDates.email;
-elInputMessage.value = formDates.message;
+// elInputEmail.value = formDates.email;
+// elInputMessage.value = formDates.message;
 
 elInputForm.addEventListener("input",  throttle(event => writeFormValueToStorage(event), 500));
 
 function writeFormValueToStorage(event) {
 	formDates[event.target.name] = event.target.value;
-	
+	 
 	localStorage.setItem(DATAS_STORAGE_KEY, JSON.stringify(formDates));
 }
 
@@ -39,6 +44,8 @@ elInputForm.addEventListener("submit", (event) => {
 
 	console.log(formDates);
 
+	formDates.email = "";
+	formDates.message = "";
 	elInputEmail.value = "";
 	elInputMessage.value = "";
 	
